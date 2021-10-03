@@ -7,7 +7,7 @@
 
 <div id="event-create-container" class="col-md-6 offset-md-3">
   <h1>Cadastre-se como orientador </h1>
-  <form action="/register" method="POST">
+  <form action="/projetos" method="POST">
     @csrf
     <div class="form-group">
       <label for="title">Nome:</label>

@@ -30,13 +30,34 @@
               <li class="nav-item">
                 <a href="/" class="nav-link">Conversas</a>
               </li>
-              <li class="nav-item">
-                <a href="/register/create" class="nav-link">Quero Orientar</a>
-              </li>
-              <li class="nav-item">
-                <a href="/events/create" class="nav-link">Postar Projeto</a>
-              </li>
-                 
+          
+                @guest
+                  <li class="nav-item">
+                    <a href="/register" class="nav-link">Cadastrar</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/login" class="nav-link">Login</a>
+                  </li>
+                @endguest
+                @auth
+                <li class="nav-item">
+                  <a href="/projetos/create" class="nav-link">Quero Orientar</a>
+                </li>
+                <li class="nav-item">
+                  <a href="/projetos/create" class="nav-link">Tenho um projeto!</a>
+                </li>
+                <li class="nav-item">
+                  <form action="/logout" method="POST">
+                    @csrf
+                    <a href="/logout" 
+                      class="nav-link" 
+                      onclick="event.preventDefault();
+                      this.closest('form').submit();">
+                      Sair
+                    </a>
+                  </form>
+                </li>
+                @endauth
             </ul>
           </div>
         </nav>

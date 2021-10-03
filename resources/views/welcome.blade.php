@@ -15,15 +15,15 @@
     <h2>Orientadores disponíveis</h2>
     <p class="subtitle">Veja os orientadores que estão disponíveis</p>
     <div id="cards-container" class="row">
-        @foreach($register as $register)
+        @foreach($Projeto as $Projeto)
         <div class="card col-md-3">
-            <img src="/img/event_placeholder.jpg" alt="{{ $register->name }}">
+            <img src="/img/event_placeholder.jpg" alt="{{ $Projeto->name }}">
             <div class="card-body">
                 <p class="card-date">10/09/2020</p>
-                <h5 class="card-title">{{ $register->name }}</h5>
+                <h5 class="card-title">{{ $Projeto->name }}</h5>
                 <p class="card-participants">X Participantes</p>
-                <a href="/register/edit/{{$register->id}}" class="btn btn-primary">Editar</a>
-                <form action="/register/{{$register->id}}" method ="POST">
+                <a href="/projetos/edit/{{$Projeto->id}}" class="btn btn-primary">Editar</a>
+                <form action="/projetos/{{$Projeto->id}}" method ="POST">
                   @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger delete-btn"><ion-icon name="trash-outline"></ion-icon> Deletar</button>
