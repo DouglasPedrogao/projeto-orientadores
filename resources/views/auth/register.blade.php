@@ -30,15 +30,10 @@
             </div>
 
             <div class="mt-4">
-                <select id="gender"  class="block mt-1 w-full" name="gender">
-
-                    <option value="1" {{ $this->user->gender== '0' ? 'selected' : '' }} >
-                        Orientador
-                    </option>
-                    <option value="0" {{ $this->user->gender== '1' ? 'selected' : '' }}>
-                        Aluno
-                    </option>
-    
+                <x-jet-label for="role_id" value="{{ __('Register as:') }}"/>
+                <select name="role_id" class="block mt-1 w-full">
+                    <option value="1">Estudante</option>
+                    <option value="2">Orientador</option>
                 </select>
             </div>
 
