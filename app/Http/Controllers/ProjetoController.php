@@ -26,9 +26,23 @@ class ProjetoController extends Controller
         $Projeto->disponibility = $request->disponibility;
         $Projeto->description = $request->description;
 
+        // Image Upload
+
+        if($request->hasFile('image') && $request->file('image')->isValid()){
+            $requestImage = $request->image;
+
+            $extension = $requestImage->extension();
+
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
+        
+            $requestImage->move(public_path('img/events'), $imageName);
+
+            $Projeto->image = $imageName;
+        }
+
         $Projeto->save();
 
-        return redirect('/');
+        return redirect('/')->with('msg', 'Projeto criado com sucesso!');
     }
     public function destroy($id){
 
