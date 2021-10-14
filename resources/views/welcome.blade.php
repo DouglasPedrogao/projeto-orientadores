@@ -17,17 +17,13 @@
     <div id="cards-container" class="row">
         @foreach($Projeto as $Projeto)
         <div class="card col-md-3">
-            <img src="/img/event_placeholder.jpg" alt="{{ $Projeto->name }}">
+            <img src="/img/projects/{{ $Projeto->image }}" alt="{{ $Projeto->name }}">
             <div class="card-body">
                 <p class="card-date">10/09/2020</p>
                 <h5 class="card-title">{{ $Projeto->name }}</h5>
                 <p class="card-participants">X Participantes</p>
-                <a href="/projetos/edit/{{$Projeto->id}}" class="btn btn-primary">Editar</a>
-                <form action="/projetos/{{$Projeto->id}}" method ="POST">
-                  @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger delete-btn"><ion-icon name="trash-outline"></ion-icon> Deletar</button>
-                        </form>
+                <a href="/projetos/{{$Projeto -> id}}" class="btn btn-primary"> Saber mais </a>
+                    </form>
             </div>
         </div>
         @endforeach

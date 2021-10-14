@@ -15,13 +15,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjetoController;
 
 Route::get('/', [ProjetoController::class, 'index']);
-Route::get('/projetos/create', [ProjetoController::class, 'create']);
-Route::post('/projetos', [ProjetoController::class, 'store']);
-Route::get('/projetos/edit/{id}',[ProjetoController::class, 'edit']);
-Route::put('/projetos/update/{id}', [ProjetoController::class, 'update']);
-Route::delete('/projetos/{id}', [ProjetoController::class, 'destroy']);
+Route::get('/projetos/create', [ProjetoController::class, 'create'])->middleware('auth');
+Route::get('/projetos/{id}', [ProjetoController::class, 'show'])->middleware('auth');
+Route::post('/projetos', [ProjetoController::class, 'store'])->middleware('auth');
+Route::get('/projetos/edit/{id}',[ProjetoController::class, 'edit'])->middleware('auth');
+Route::put('/projetos/update/{id}', [ProjetoController::class, 'update'])->middleware('auth');
+#Route::delete('/projetos/{id}', [ProjetoController::class, 'destroy'])->middleware('auth');
 
+Route::get('/dashboard', [ProjetoController::class,'dashboard'])->middleware('auth');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::post('/projetos/join/{id}', [ProjetoController::class,'joinProject'])->middleware('auth');

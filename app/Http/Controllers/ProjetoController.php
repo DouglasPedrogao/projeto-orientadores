@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Projeto;
+use App\Models\User;
 
 class ProjetoController extends Controller
 {
+    
     public function index(){
         $Projeto = Projeto::all();
         return view('welcome', ['Projeto' => $Projeto ]);
@@ -35,11 +37,12 @@ class ProjetoController extends Controller
 
             $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
         
-            $requestImage->move(public_path('img/events'), $imageName);
+            $requestImage->move(public_path('img/projects'), $imageName);
 
             $Projeto->image = $imageName;
         }
-
+        $user = auth()->user();
+        $Projeto->user_id = $user->id;
         $Projeto->save();
 
         return redirect('/')->with('msg', 'Projeto criado com sucesso!');
@@ -61,5 +64,29 @@ class ProjetoController extends Controller
 
         Projeto::findOrFail($request->id)->update($request->all());
         return redirect('/')->with('msg', 'Evento editado com sucesso!');
+    }
+    public function show($id){
+        $Projeto = Projeto::findOrFail($id);
+        $ProjectOwner = User::where('id', $Projeto->user_id)->first()->toArray();
+
+        return view('projetos.show',['Projeto'=>$Projeto, 'ProjectOwner' => $ProjectOwner]);
+    }
+
+    public function dashboard(){
+        $user = auth()->user();
+        $Projeto = $user->projetos;
+
+        return view('projetos.dashboard',['Projetos'=> $Projeto]);
+    }
+
+    public function joinProject($id){
+        $user = auth()->user();
+
+        $user->projetosAsParticipant()->attach($id);
+        
+        $Projeto = Projeto::findOrFail($id);
+
+        return redirect('/dashboard')->with('msg','Sua solicitação foi enviada para o projeto:'. $Projeto->name);
+
     }
 }

@@ -41,9 +41,6 @@
                 @endguest
                 @auth
                 <li class="nav-item">
-                  <a href="/projetos/create" class="nav-link">Quero Orientar</a>
-                </li>
-                <li class="nav-item">
                   <a href="/projetos/create" class="nav-link">Tenho um projeto!</a>
                 </li>
                 <li class="nav-item">

@@ -59,4 +59,12 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function projetos(){
+        return $this->hasMany('App\Models\Projeto');
+    }
+    
+    public function projetosAsParticipant() {
+        return $this->belongsToMany('App\Models\Event');
+    }
 }

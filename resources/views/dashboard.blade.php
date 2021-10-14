@@ -1,8 +1,16 @@
 @extends('layouts.main')
 
-@section('title', 'Editar seu cadastro')
+@section('title', 'Dashboard')
 
 @section('content')
 
-<h1> Tela de Dashboard!</h1>
+<div class="col-md-10 offset-md-1 dashboard-title-container">
+    <h1>Meus Projetos</h1>
+</div>
+<div class="col-md-10 offset-md-1 dashboard-events-container">
+    @if(count($Projeto) > 0)
+    @else
+    <p>Você ainda não tem projetos <a href="/projetos/create">Criar projeto</a></p>
+    @endif
+</div>
 @endsection

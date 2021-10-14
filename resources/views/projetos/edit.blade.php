@@ -29,7 +29,7 @@
       <label for="title">Descreva suas habilidades:</label>
       <textarea name="description" id="description" class="form-control" placeholder="Suas habilidades"> {{$Projeto->description}} </textarea>
     </div>
-    <input type="submit" class="btn btn-primary" value="Editar Evento">
+    <input type="submit" class="btn btn-primary" value="Editar Projeto">
   </form>
 </div>
 
