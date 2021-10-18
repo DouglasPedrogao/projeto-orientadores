@@ -83,7 +83,7 @@ class ProjetoController extends Controller
         $user = auth()->user();
 
         $user->projetosAsParticipant()->attach($id);
-        
+
         $Projeto = Projeto::findOrFail($id);
 
         return redirect('/dashboard')->with('msg','Sua solicitação foi enviada para o projeto:'. $Projeto->name);

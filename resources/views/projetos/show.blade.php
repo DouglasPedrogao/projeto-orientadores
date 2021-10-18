@@ -14,14 +14,14 @@
         <p class="event-city"><ion-icon name="location-outline"></ion-icon> {{ $Projeto->campus }}</p>
         <p class="events-participants"><ion-icon name="people-outline"></ion-icon> X Alunos</p>
         <p class="event-owner"><ion-icon name="star-outline"></ion-icon> Orientador: {{ $ProjectOwner['name'] }}</p>
-        <form action="/events/join/{{ $Projeto->id }}" method="POST">
+        <form action="/projetos/join/{{ $Projeto->id }}" method="POST">
           @csrf
           <a href="/projetos/join/{{ $Projeto->id }}" 
             class="btn btn-primary" 
             id="event-submit"
-            onclick="event.preventDefault();
+            onclick="Projeto.preventDefault();
             this.closest('form').submit();">
-            Confirmar Presença
+            Solicitar orientação
           </a>
         </form>
       </div>

@@ -9,13 +9,19 @@ class Projeto extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'items' => 'array'
+    ];
+
+    protected $dates = ['date'];
+
     protected $guarded = [] ;
 
     public function user(){
         return $this->belongsTo('App\Models\User');
     }
 
-    public function users(){
+    public function userss(){
         return $this->belongsToMany('App\Models\User');
     }
 }

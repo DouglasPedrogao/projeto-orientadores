@@ -62,9 +62,9 @@ class User extends Authenticatable
 
     public function projetos(){
         return $this->hasMany('App\Models\Projeto');
-    }
+    } 
     
-    public function projetosAsParticipant() {
-        return $this->belongsToMany('App\Models\Event');
+    public function projetosAsParticipant(){
+        return $this->belongsToMany('App\Models\Projeto');
     }
 }
