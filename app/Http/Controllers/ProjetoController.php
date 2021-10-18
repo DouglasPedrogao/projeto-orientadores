@@ -55,8 +55,12 @@ class ProjetoController extends Controller
     }
 
     public function edit($id){
+        $user = auth()->user();
         $Projeto = Projeto::findOrFail($id);
 
+        if($user->id != $Projeto->user_id){
+            return redirect ('/dashboard');
+        }
         return view('projetos.edit',['Projeto'=> $Projeto]);
     }
 
@@ -67,16 +71,32 @@ class ProjetoController extends Controller
     }
     public function show($id){
         $Projeto = Projeto::findOrFail($id);
+
+        $user = auth()->user();
+        $hasUserJoined = false;
+
+        if($user){
+            $userProjects = $user->projetosAsParticipant->toArray();
+
+            foreach($userProjects as $userProject){
+                if ($userProject['id'] == $id){
+                    $hasUserJoined = true;
+                }
+            }
+        }
+
         $ProjectOwner = User::where('id', $Projeto->user_id)->first()->toArray();
 
-        return view('projetos.show',['Projeto'=>$Projeto, 'ProjectOwner' => $ProjectOwner]);
+        return view('projetos.show',['Projeto'=>$Projeto, 'ProjectOwner' => $ProjectOwner, 'hasUserJoined' => $hasUserJoined]);
     }
 
     public function dashboard(){
         $user = auth()->user();
         $Projeto = $user->projetos;
+        $projetosAsParticipant = $user->projetosAsParticipant;
 
-        return view('projetos.dashboard',['Projetos'=> $Projeto]);
+        return view('projetos.dashboard',
+        ['Projetos'=> $Projeto, 'projetosAsParticipant' => $projetosAsParticipant]);
     }
 
     public function joinProject($id){
@@ -87,6 +107,17 @@ class ProjetoController extends Controller
         $Projeto = Projeto::findOrFail($id);
 
         return redirect('/dashboard')->with('msg','Sua solicitação foi enviada para o projeto:'. $Projeto->name);
+
+    }
+
+    public function leaveProject($id){
+        $user = auth()->user();
+
+        $user->projetosAsParticipant()->detach($id);
+
+        $Projeto = Projeto::findOrFail($id);
+
+        return redirect('/dashboard')->with('msg','Voce não faz mais parte do projeto:'. $Projeto->name);
 
     }
 }

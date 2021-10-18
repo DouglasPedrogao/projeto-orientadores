@@ -21,7 +21,7 @@
             <div class="card-body">
                 <p class="card-date">10/09/2020</p>
                 <h5 class="card-title">{{ $Projeto->name }}</h5>
-                <p class="card-participants">X Participantes</p>
+                <p class="card-participants">{{count($Projeto->users)}} Alunos</p>
                 <a href="/projetos/{{$Projeto -> id}}" class="btn btn-primary"> Saber mais </a>
                     </form>
             </div>

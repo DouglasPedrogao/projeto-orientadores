@@ -24,4 +24,6 @@ Route::put('/projetos/update/{id}', [ProjetoController::class, 'update'])->middl
 
 Route::get('/dashboard', [ProjetoController::class,'dashboard'])->middleware('auth');
 
-Route::post('/projetos/join/{id}', [ProjetoController::class,'joinProject'])->middleware('auth');
+Route::get('/projetos/join/{id}', [ProjetoController::class,'joinProject'])->middleware('auth');
+
+Route::delete('/projetos/leave/{id}', [ProjetoController::class,'leaveProject'])->middleware('auth');

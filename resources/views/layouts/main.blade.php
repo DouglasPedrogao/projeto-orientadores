@@ -28,6 +28,10 @@
                 <a href="/" class="nav-link">Home</a>
               </li>
               <li class="nav-item">
+                <a href="/dashboard" class="nav-link">Meus projetos</a>
+              </li>         
+              </li>
+              <li class="nav-item">
                 <a href="/" class="nav-link">Conversas</a>
               </li>
           
