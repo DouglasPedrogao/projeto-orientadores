@@ -24,11 +24,16 @@
               <img src="/img/logo.png" alt="Projeto_TCC">
             </a>
             <ul class="navbar-nav">
+              @auth
               <li class="nav-item">
+                  <a href="/projetos/create" class="nav-link">{{Auth::user()->name}}</a>
+                </li>
+              @endauth
+                <li class="nav-item">
                 <a href="/" class="nav-link">Home</a>
               </li>
               <li class="nav-item">
-                <a href="/dashboard" class="nav-link">Meus projetos</a>
+                <a href="/dashboard" class="nav-link"></a>
               </li>         
               </li>
               <li class="nav-item">
@@ -43,7 +48,7 @@
                     <a href="/login" class="nav-link">Login</a>
                   </li>
                 @endguest
-                @auth
+                @auth                
                 <li class="nav-item">
                   <a href="/projetos/create" class="nav-link">Tenho um projeto!</a>
                 </li>

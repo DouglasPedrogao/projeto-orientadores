@@ -27,9 +27,9 @@
                     <td><a href="/projetos/edit/{{$Projetos->id}}" class="btn btn-primary">Editar</a> 
                         <form action="/projetos/{{$Projetos->id}}" method ="POST">
                             @csrf
-                                      @method('DELETE')
-                                      <button type="submit" class="btn btn-danger delete-btn"><ion-icon name="trash-outline"></ion-icon> Deletar</button>
-                                  </form>
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger delete-btn"><ion-icon name="trash-outline"></ion-icon> Deletar</button>
+                            </form>
                 </tr>
             @endforeach    
         </tbody>

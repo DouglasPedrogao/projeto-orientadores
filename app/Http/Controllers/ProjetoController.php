@@ -32,13 +32,9 @@ class ProjetoController extends Controller
 
         if($request->hasFile('image') && $request->file('image')->isValid()){
             $requestImage = $request->image;
-
             $extension = $requestImage->extension();
-
             $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
-        
             $requestImage->move(public_path('img/projects'), $imageName);
-
             $Projeto->image = $imageName;
         }
         $user = auth()->user();
@@ -119,5 +115,14 @@ class ProjetoController extends Controller
 
         return redirect('/dashboard')->with('msg','Voce não faz mais parte do projeto:'. $Projeto->name);
 
+    }
+
+    public function part_request($user_requested_id){
+        
+    }
+    public function main_layout(){
+        $user = auth()->user();
+        $nomedousuario = $user->name;
+        return view('layouts.main',['nomedousuario' => $nomedousuario]);
     }
 }
