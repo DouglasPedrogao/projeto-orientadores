@@ -10,16 +10,16 @@
   <form action="/projetos" method="POST" enctype="multipart/form-data">
    @csrf
    <div class="form-group">
-      <label for="image">Projeto:</label>
+      <label for="image">Imagem do referente ao projeto:</label>
       <input type="file" id="image" name="image" class="form-control-file">
     </div>
     <div class="form-group">
       <label for="title">Nome do projeto:</label>
-      <input type="text" class="form-control" id="name" name="name" placeholder="Nome do orientador">
+      <input type="text" class="form-control" id="name" name="name" placeholder="Nome do projeto">
     </div>
     <div class="form-group">
       <label for="title">Campus onde será realizado:</label>
-      <input type="text" class="form-control" id="campus" name="campus" placeholder="Seu campus">
+      <input type="text" class="form-control" id="campus" name="campus" placeholder="Campus onde será realizado">
     </div>
     <div class="form-group">
       <label for="title">Está disponível para orientação?</label>
@@ -30,7 +30,7 @@
     </div>
     <div class="form-group">
       <label for="title">Descreva a respeito do seu projeto:</label>
-      <textarea name="description" id="description" class="form-control" placeholder="Suas habilidades"></textarea>
+      <textarea name="description" id="description" class="form-control" placeholder="Comente a respeito do seu projeto"></textarea>
     </div>
     <input type="submit" class="btn btn-primary" value="Criar Projeto">
   </form>

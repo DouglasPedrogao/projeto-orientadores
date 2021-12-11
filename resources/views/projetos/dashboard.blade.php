@@ -12,7 +12,6 @@
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">#</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Participantes</th>
                 <th scope="col">Ações</th>
@@ -21,7 +20,6 @@
         <tbody>
             @foreach($Projetos as $Projetos)
                 <tr>
-                    <td scropt="row">{{ $loop->index + 1 }}</td>
                     <td><a href="/projetos/{{ $Projetos->id }}">{{ $Projetos->name}}</a></td>
                     <td>{{count($Projetos->users)}}</td>
                     <td><a href="/projetos/edit/{{$Projetos->id}}" class="btn btn-primary">Editar</a> 
@@ -46,7 +44,6 @@
 <table class="table">
     <thead>
         <tr>
-            <th scope="col">#</th>
             <th scope="col">Nome</th>
             <th scope="col">Participantes</th>
             <th scope="col">Ações</th>
@@ -55,7 +52,6 @@
     <tbody>
         @foreach($projetosAsParticipant as $Projetos)
             <tr>
-                <td scropt="row">{{ $loop->index + 1 }}</td>
                 <td><a href="/projetos/{{ $Projetos->id }}">{{ $Projetos->name}}</a></td>
                 <td>{{count($Projetos->users)}}</td>
                 <td>

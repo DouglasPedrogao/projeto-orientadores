@@ -122,7 +122,6 @@ class ProjetoController extends Controller
     }
     public function main_layout(){
         $user = auth()->user();
-        $nomedousuario = $user->name;
-        return view('layouts.main',['nomedousuario' => $nomedousuario]);
+        return view('layouts.main',['nomedousuario' => $user]);
     }
 }

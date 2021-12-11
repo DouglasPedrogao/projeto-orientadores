@@ -26,12 +26,9 @@
             <ul class="navbar-nav">
               @auth
               <li class="nav-item">
-                  <a href="/projetos/create" class="nav-link">{{Auth::user()->name}}</a>
-                </li>
-              @endauth
-                <li class="nav-item">
-                <a href="/" class="nav-link">Home</a>
+                  <a href="/dashboard" class="nav-link">{{Auth::user()->name}}</a>
               </li>
+              @endauth
               <li class="nav-item">
                 <a href="/dashboard" class="nav-link"></a>
               </li>         
@@ -39,7 +36,7 @@
               <li class="nav-item">
                 <a href="/" class="nav-link">Conversas</a>
               </li>
-          
+
                 @guest
                   <li class="nav-item">
                     <a href="/register" class="nav-link">Cadastrar</a>
@@ -50,7 +47,7 @@
                 @endguest
                 @auth                
                 <li class="nav-item">
-                  <a href="/projetos/create" class="nav-link">Tenho um projeto!</a>
+                  <a href="/projetos/create" class="nav-link">Tenho um projeto</a>
                 </li>
                 <li class="nav-item">
                   <form action="/logout" method="POST">
@@ -80,7 +77,7 @@
           </div>
         </main>
       <footer>
-        <p>ProjTCC &copy; 2021</p>
+        <p>Projeto Orientador &copy; 2021</p>
       </footer>
       <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     </body>
